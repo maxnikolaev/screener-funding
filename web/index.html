@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MEXC Funding Screener</title>
+  <link rel="stylesheet" href="./web/styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="header card">
+      <div class="title-wrap">
+        <div class="dot"></div>
+        <h1>MEXC Funding Screener</h1>
+      </div>
+      <div class="actions">
+        <button id="refreshBtn" class="btn">Refresh</button>
+      </div>
+    </header>
+
+    <section class="controls card">
+      <label>
+        <span>Limit</span>
+        <input id="limit" type="number" min="1" max="300" value="60" />
+      </label>
+      <label>
+        <span>Sort</span>
+        <select id="sort">
+          <option value="abs_desc">Abs funding desc</option>
+          <option value="rate_desc">Funding desc</option>
+          <option value="rate_asc">Funding asc</option>
+          <option value="hold_desc">Hold vol desc</option>
+          <option value="volume_desc">Volume24 USD desc</option>
+          <option value="settle_asc">Funding soonest</option>
+        </select>
+      </label>
+      <label>
+        <span>Quote</span>
+        <input id="quoteCoin" type="text" value="USDT" />
+      </label>
+      <label>
+        <span>Min holdVol</span>
+        <input id="minHoldVol" type="number" min="0" value="0" />
+      </label>
+      <label>
+        <span>Min Volume24 USD</span>
+        <input id="minVolume24" type="number" min="0" value="0" />
+      </label>
+      <label>
+        <span>Min |Funding %|</span>
+        <input id="minAbsFundingPct" type="number" min="0" step="0.0001" value="0" />
+      </label>
+      <label>
+        <span>Symbol filter</span>
+        <input id="symbolQuery" type="text" placeholder="BTC" />
+      </label>
+      <label>
+        <span>Group by</span>
+        <select id="groupBy">
+          <option value="none">None</option>
+          <option value="sign">Funding sign</option>
+          <option value="quote_coin">Quote coin</option>
+          <option value="settle_window">Time to funding</option>
+        </select>
+      </label>
+      <label class="checkbox-wrap">
+        <input id="onlyEnabled" type="checkbox" checked />
+        <span>Only enabled</span>
+      </label>
+      <label class="checkbox-wrap">
+        <input id="includeApiBlocked" type="checkbox" />
+        <span>Include apiBlocked</span>
+      </label>
+      <label>
+        <span>Auto refresh (sec)</span>
+        <input id="pollSec" type="number" min="2" max="120" value="8" />
+      </label>
+    </section>
+
+    <section class="stats card">
+      <div id="statsText">Loading...</div>
+      <div id="sourceText"></div>
+    </section>
+
+    <section class="table-card card">
+      <table>
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Funding %</th>
+            <th>holdVol</th>
+            <th>Volume24 USD</th>
+            <th>Time to Funding</th>
+            <th>nextSettle</th>
+          </tr>
+        </thead>
+        <tbody id="rowsBody"></tbody>
+      </table>
+    </section>
+  </div>
+
+  <script src="./web/app.js"></script>
+</body>
+</html>
