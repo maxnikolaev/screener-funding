@@ -1,0 +1,7 @@
+.venv
+__pycache__
+*.pyc
+*.pyo
+.git
+screener_out.log
+screener_err.log
