@@ -2,5 +2,6 @@
 __pycache__/
 *.pyc
 *.pyo
+.vercel/
 screener_out.log
 screener_err.log
